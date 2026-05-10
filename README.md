@@ -6,7 +6,7 @@ This project downloads historical OHLCV market data from FYERS across multiple e
 
 ---
 
-# Motivation
+# 🎯 Motivation
 
 Systematic trading strategies require large amounts of clean and structured historical market data for:
 
