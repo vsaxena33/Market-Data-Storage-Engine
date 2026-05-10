@@ -1,3 +1,7 @@
+# ============================================================
+# IMPORTING LIBRARIES
+# ============================================================
+
 # FYERS API library
 from fyers_apiv3 import fyersModel
 
