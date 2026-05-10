@@ -21,7 +21,7 @@ This project was built to create a scalable local market-data infrastructure cap
 
 ---
 
-# Features
+# ⚡ Features
 
 - Historical OHLCV market data ingestion from FYERS
 - Multi-exchange symbol support
@@ -37,7 +37,7 @@ This project was built to create a scalable local market-data infrastructure cap
 
 ---
 
-# Supported Exchanges
+# 📈 Supported Exchanges
 
 Currently supported exchanges:
 
@@ -51,7 +51,7 @@ Currently supported exchanges:
 
 ---
 
-# Tech Stack
+# 🛠 Tech Stack
 
 | Component | Technology |
 |----------|-------------|
@@ -65,7 +65,7 @@ Currently supported exchanges:
 
 ---
 
-# Project Structure
+# 📂 Project Structure
 
 ```bash
 market-data-engine/
@@ -87,7 +87,7 @@ market-data-engine/
 
 ---
 
-# Installation
+# 📦 Installation
 
 ## Clone the Repository
 
@@ -104,7 +104,20 @@ pip install -r requirements.txt
 
 ---
 
-# Configuration
+# 🔑 API Setup
+
+To run this project you need:
+- A Fyers trading account
+- API credentials
+- Access token
+
+Generate the access token using:
+
+```bash
+python autoLogin.py
+```
+
+> Note: Due to SEBI guidelines, a new access token must be generated daily.
 
 Add your FYERS API credentials inside:
 
@@ -121,7 +134,7 @@ REDIRECT_URI = "YOUR_REDIRECT_URI"
 ```
 ---
 
-# Running Program
+# ▶️ Running Program
 
 ``` Bash
 python main.py
@@ -129,7 +142,7 @@ python main.py
 
 ---
 
-# Data Storage
+# 📂 Data Storage
 
 Downloaded market data is stored inside:
 
@@ -148,7 +161,7 @@ NSE_TCS_EQ.parquet
 
 ---
 
-# Data Format
+# 📊 Data Format
 
 Each parquet file contains:
 
@@ -166,7 +179,7 @@ Index:
 
 ---
 
-# Architecture Overview
+# 🧠 Architecture Overview
 
 The pipeline works in the following stages:
 
@@ -180,7 +193,7 @@ The pipeline works in the following stages:
 
 ---
 
-# Performance Features
+# 🚀 Performance Features
 ## Multithreading
 
 Uses ```ThreadPoolExecutor``` for parallel downloads.
@@ -203,7 +216,7 @@ Uses Apache Parquet format for:
 
 ---
 
-# Disclaimer
+# ⚠️ Disclaimer
 
 This project is intended strictly for educational and research purposes.
 
@@ -216,12 +229,12 @@ Users are responsible for ensuring compliance with:
 
 ---
 
-# Author
+# 👨‍💻 Author
 
 Vaibhav Saxena
 
 ---
 
-# License
+# 📜 License
 
 MIT License
