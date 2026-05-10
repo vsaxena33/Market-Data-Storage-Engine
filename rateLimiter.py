@@ -1,3 +1,7 @@
+# ============================================================
+# IMPORTING LIBRARIES
+# ============================================================
+
 # Lock helps prevent multiple threads from modifying data together
 from threading import Lock
 
