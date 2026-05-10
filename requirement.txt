@@ -1,0 +1,8 @@
+fyers-apiv3
+pandas
+pyarrow
+numpy
+pytz
+requests
+urllib3
+python-dateutil
