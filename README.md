@@ -1,27 +1,45 @@
-# Market-Data-Storage-Engine
+# Market Data Engine
 
-High-performance historical market data pipeline with multithreaded fetching, rate limiting, and parquet storage.
+High-performance historical market data ingestion and storage pipeline for quantitative research, backtesting, and systematic trading.
 
-This project downloads historical OHLCV market data for thousands of symbols across multiple exchanges and stores them efficiently in Apache Parquet format for fast analytics, backtesting, and quantitative research.
+This project downloads historical OHLCV market data from FYERS across multiple exchanges, processes it using a multithreaded architecture with thread-safe rate limiting, and stores it efficiently in Apache Parquet format for fast analytics and scalable research workflows.
+
+---
+
+# Motivation
+
+Systematic trading strategies require large amounts of clean and structured historical market data for:
+
+- Backtesting
+- Quantitative research
+- Signal generation
+- Feature engineering
+- Strategy validation
+- Execution simulation
+
+This project was built to create a scalable local market-data infrastructure capable of storing high-frequency OHLCV data efficiently while respecting broker API constraints and handling real-world market data issues such as sparse option-chain candles and illiquid contracts.
 
 ---
 
 # Features
 
-- Download historical market data from FYERS
+- Historical OHLCV market data ingestion from FYERS
 - Multi-exchange symbol support
 - Multithreaded parallel data fetching
-- Built-in API rate limiting
-- Automatic parquet storage
-- Duplicate timestamp removal
+- Thread-safe API rate limiting
+- Incremental parquet updates
+- Automatic duplicate timestamp removal
 - Timezone conversion to IST
+- Efficient Apache Parquet storage
+- Handles sparse option-chain candles
 - Scalable architecture for large datasets
+- Fault-tolerant symbol-level exception handling
 
 ---
 
 # Supported Exchanges
 
-The project currently supports:
+Currently supported exchanges:
 
 - NSE_CM
 - NSE_FO
@@ -33,10 +51,24 @@ The project currently supports:
 
 ---
 
+# Tech Stack
+
+| Component | Technology |
+|----------|-------------|
+| Language | Python |
+| Concurrency | ThreadPoolExecutor |
+| Data Processing | Pandas |
+| Storage | Apache Parquet |
+| Serialization | PyArrow |
+| Broker API | FYERS API |
+| Rate Limiting | Thread-safe custom limiter |
+
+---
+
 # Project Structure
 
 ```bash
-market-data-storage-engine/
+market-data-engine/
 │
 ├── main.py
 ├── credentials.py
@@ -45,9 +77,9 @@ market-data-storage-engine/
 ├── fetchSymbol.py
 ├── historicalData.py
 ├── initializer.py
-├── main.py
 ├── rateLimiter.py
 ├── symbolMaster.py
+├── parquet_data/
 ├── README.md
 ├── LICENSE
 └── requirements.txt
@@ -55,15 +87,41 @@ market-data-storage-engine/
 
 ---
 
-# Install Dependencies
+# Installation
 
-``` Bash
+## Clone the Repository
+
+```bash
+git clone https://github.com/your-username/market-data-engine.git
+cd market-data-engine
+```
+
+## Install Dependencies
+
+```bash
 pip install -r requirements.txt
 ```
 
 ---
 
-# Running Progeam
+# Configuration
+
+Add your FYERS API credentials inside:
+
+``` Bash
+credentials.py
+```
+
+Example:
+
+``` Bash
+CLIENT_ID = "YOUR_CLIENT_ID"
+SECRET_KEY = "YOUR_SECRET_KEY"
+REDIRECT_URI = "YOUR_REDIRECT_URI"
+```
+---
+
+# Running Program
 
 ``` Bash
 python main.py
@@ -71,7 +129,7 @@ python main.py
 
 ---
 
-# Output
+# Data Storage
 
 Downloaded market data is stored inside:
 
@@ -117,7 +175,8 @@ The pipeline works in the following stages:
 3. Extract unique symbols
 4. Fetch historical OHLCV data
 5. Apply rate limiting
-6. Store cleaned data into parquet files
+6. Remove duplicate timestamps
+7. Store cleaned data into parquet files
 
 ---
 
@@ -140,14 +199,20 @@ Uses Apache Parquet format for:
 * Faster reads
 * Smaller file sizes
 * Better analytics performance
+* Efficient columnar compression
 
 ---
 
 # Disclaimer
 
-This project is for educational and research purposes only.
+This project is intended strictly for educational and research purposes.
 
-Use responsibly and ensure compliance with FYERS API terms and exchange regulations.
+Users are responsible for ensuring compliance with:
+
+* FYERS API Terms of Service
+* Exchange regulations
+* SEBI guidelines
+* Applicable financial market laws
 
 ---
 
