@@ -29,13 +29,13 @@ Author: Vaibhav Saxena
 # ============================================================
 
 # We will use the symbol master data to get the list of symbols to download
-from zds_symbolMaster import load_symbol_master
+from symbolMaster import load_symbol_master
 
 # Used to initialize Fyers API Object
-from zds_initializer import initialize_fyers
+from initializer import initialize_fyers
 
 # Downloads and saves data
-from zds_fetchSymbol import run_parallel_fetch
+from fetchSymbol import run_parallel_fetch
 
 # ============================================================
 # MAIN PROGRAM
