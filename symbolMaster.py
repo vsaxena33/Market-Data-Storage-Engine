@@ -1,3 +1,7 @@
+# ============================================================
+# IMPORTING LIBRARIES
+# ============================================================
+
 # pandas is used for working with tables/dataframes
 import pandas as pd
 
