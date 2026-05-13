@@ -92,7 +92,7 @@ market-data-engine/
 ## Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/market-data-engine.git
+git clone https://github.com/vsaxena33/market-data-engine.git
 cd market-data-engine
 ```
 
